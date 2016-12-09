@@ -1,5 +1,5 @@
 
-**Project Name :**  Sleeping in The Library
+**Project Name :**  Flick Finder
 
 **Source:** Udactiy iOS Nanodegree
 

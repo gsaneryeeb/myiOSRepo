@@ -1,7 +1,7 @@
 
 **Project Name :**  Sleeping in The Library
 
-**Source:** Udactiy iOS Nanodegree
+**From:** Udactiy iOS Nanodegree
 
 **Language:** Swift 3.0.1
 

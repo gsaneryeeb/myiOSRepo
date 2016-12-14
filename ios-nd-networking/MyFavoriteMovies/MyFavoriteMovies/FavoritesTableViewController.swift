@@ -11,12 +11,12 @@ import UIKit
 // MARK: - FavoritesTableViewController: UITableViewController
 
 class FavoritesTableViewController: UITableViewController {
-    
+
     // MARK: Properties
     
     var appDelegate: AppDelegate!
     var movies: [Movie] = [Movie]()
-    
+
     // MARK: Life Cycle
     
     override func viewDidLoad() {
@@ -86,7 +86,7 @@ class FavoritesTableViewController: UITableViewController {
                 print("Cannot find key '\(Constants.TMDBResponseKeys.Results)' in \(parsedResult)")
                 return
             }
-            
+
             /* 6. Use the data! */
             self.movies = Movie.moviesFromResults(results)
             performUIUpdatesOnMain {
@@ -164,7 +164,7 @@ extension FavoritesTableViewController {
                         cell?.imageView!.image = image
                     }
                 } else {
-                    print("Could not create image from \(data)")
+                   print("Could not create image from \(data)")
                 }
             }
             
@@ -172,7 +172,7 @@ extension FavoritesTableViewController {
             task.resume()
         }
         
-        return cell!
+        return cell!        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

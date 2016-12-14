@@ -1,6 +1,6 @@
 //
 //  Constants.swift
-//  SleepingInTheLibrary
+//  MyFavoriteMovies
 //
 //  Created by Jarrod Parkes on 11/5/15.
 //  Copyright © 2015 Udacity. All rights reserved.
@@ -30,7 +30,7 @@ struct Constants {
     
     // MARK: TMDB Parameter Values
     struct TMDBParameterValues {
-        static let ApiKey = "YOUR_API_KEY_HERE"
+        static let ApiKey = "628c9b4ab4cb385a7e00fefc14593b07"
     }
     
     // MARK: TMDB Response Keys

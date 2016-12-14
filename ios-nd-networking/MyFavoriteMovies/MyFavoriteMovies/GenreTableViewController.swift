@@ -36,7 +36,7 @@ class GenreTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-        
+
         /* TASK: Get movies by a genre id, then populate the table */
         
         /* 1. Set the parameters */
@@ -83,7 +83,7 @@ class GenreTableViewController: UITableViewController {
                 print("TheMovieDB returned an error. See the '\(Constants.TMDBResponseKeys.StatusCode)' and '\(Constants.TMDBResponseKeys.StatusMessage)' in \(parsedResult)")
                 return
             }
-            
+                    
             /* GUARD: Is the "results" key in parsedResult? */
             guard let results = parsedResult[Constants.TMDBResponseKeys.Results] as? [[String:AnyObject]] else {
                 print("Cannot find key '\(Constants.TMDBResponseKeys.Results)' in \(parsedResult)")
@@ -157,7 +157,7 @@ extension GenreTableViewController {
                     print("No data was returned by the request!")
                     return
                 }
-                
+
                 /* 5. Parse the data */
                 // No need, the data is already raw image data.
                 
@@ -171,7 +171,7 @@ extension GenreTableViewController {
                 }
             }
             
-            /* 7. Start the request */
+            /* 7. Start the request */            
             task.resume()
         }
         
@@ -189,6 +189,8 @@ extension GenreTableViewController {
         controller.movie = movies[(indexPath as NSIndexPath).row]
         navigationController!.pushViewController(controller, animated: true)
     }
+
+    
 }
 
 // MARK: - GenreTableViewController (Genre Map)

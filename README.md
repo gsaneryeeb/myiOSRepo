@@ -1,8 +1,7 @@
-# ios-nd-networking
+# My iOS Code Repositories
 
-Udacity iOS Nanodegree iOS Networking 
+Useful iOS codes
 
 ### Prerequisites
 
-* Language: Swift 3
-* IDE: Xcode8.1
+* iOS Networking

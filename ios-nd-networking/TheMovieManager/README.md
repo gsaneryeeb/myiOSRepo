@@ -1,7 +1,7 @@
 
 # TheMovieManager
 
-Udacity iOS Nanodegree Project
+Udacity iOS Nanodegree iOS Networking exercises
 
 ### Prerequisites
 
@@ -15,3 +15,5 @@ Udacity iOS Nanodegree Project
 * GCD
 * async
 * Convenience: GET,POST
+* WebAPI, OAuth
+* Convenient Resource Methods(GET,POST)

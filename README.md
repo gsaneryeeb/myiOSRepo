@@ -1,2 +1,8 @@
-# myiOSRepo
-This Repo saved all of my iOS code with Swift
+# ios-nd-networking
+
+Udacity iOS Nanodegree iOS Networking 
+
+### Prerequisites
+
+* Language: Swift 3
+* IDE: Xcode8.1

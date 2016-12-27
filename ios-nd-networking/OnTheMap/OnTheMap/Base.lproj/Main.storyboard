@@ -13,7 +13,7 @@
         <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="Login" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Login" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -53,7 +53,7 @@
                                         <rect key="frame" x="0.0" y="202" width="343" height="32"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ehq-T8-7PS" customClass="BorderedButton" customModule="OnTheMap" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="244" width="343" height="44"/>
@@ -64,6 +64,9 @@
                                         <state key="normal" title="Login">
                                             <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xdh-KV-ov3"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWS-LC-rb7">
                                         <rect key="frame" x="0.0" y="298" width="343" height="296"/>
@@ -77,7 +80,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.89688068629999995" green="0.5100205793" blue="0.175244594" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.89688068629999995" green="0.65941511522676588" blue="0.18723778582878264" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ObJ-hK-FQv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="35" id="UGm-zY-FUV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ObJ-hK-FQv" secondAttribute="trailing" id="fC0-MJ-n6b"/>
@@ -85,6 +88,13 @@
                             <constraint firstAttribute="leadingMargin" secondItem="ObJ-hK-FQv" secondAttribute="leading" id="tdI-o1-SG6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="debugTextLabel" destination="RWS-LC-rb7" id="hjc-m3-XwJ"/>
+                        <outlet property="loginButton" destination="Ehq-T8-7PS" id="2Fy-PX-hIc"/>
+                        <outlet property="passwordTextField" destination="36R-Qc-qi2" id="Hzf-UP-N91"/>
+                        <outlet property="udcityLogoImageView" destination="gjg-1x-3hv" id="6CR-R8-FkL"/>
+                        <outlet property="usernameTextField" destination="kf6-e0-feD" id="A10-YZ-4np"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

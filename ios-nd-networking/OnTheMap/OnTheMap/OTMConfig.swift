@@ -51,11 +51,11 @@ class OTMConfig: NSObject, NSCoding {
         
         self.init()
         
-        if let imageDictionary = dictionary[TMDBClient.JSONResponseKeys.ConfigImages] as? [String:AnyObject],
-            let urlString = imageDictionary[TMDBClient.JSONResponseKeys.ConfigBaseImageURL] as? String,
-            let secureURLString = imageDictionary[TMDBClient.JSONResponseKeys.ConfigSecureBaseImageURL] as? String,
-            let posterSizesArray = imageDictionary[TMDBClient.JSONResponseKeys.ConfigPosterSizes] as? [String],
-            let profileSizesArray = imageDictionary[TMDBClient.JSONResponseKeys.ConfigProfileSizes] as? [String] {
+        if let imageDictionary = dictionary[OTMClient.JSONResponseKeys.ConfigImages] as? [String:AnyObject],
+            let urlString = imageDictionary[OTMClient.JSONResponseKeys.ConfigBaseImageURL] as? String,
+            let secureURLString = imageDictionary[OTMClient.JSONResponseKeys.ConfigSecureBaseImageURL] as? String,
+            let posterSizesArray = imageDictionary[OTMClient.JSONResponseKeys.ConfigPosterSizes] as? [String],
+            let profileSizesArray = imageDictionary[OTMClient.JSONResponseKeys.ConfigProfileSizes] as? [String] {
             baseImageURLString = urlString
             secureBaseImageURLString = secureURLString
             posterSizes = posterSizesArray
@@ -80,7 +80,7 @@ class OTMConfig: NSObject, NSCoding {
     
     private func updateConfiguration() {
         
-        TMDBClient.sharedInstance().getConfig() { (didSucceed, error) in
+        OTMClient.sharedInstance().getConfig() { (didSucceed, error) in
             if let error = error {
                 print("Error updating config: \(error.localizedDescription)")
             } else {
@@ -118,10 +118,10 @@ class OTMConfig: NSObject, NSCoding {
         NSKeyedArchiver.archiveRootObject(self, toFile: _fileURL.path)
     }
     
-    class func unarchivedInstance() -> TMDBConfig? {
+    class func unarchivedInstance() -> OTMConfig? {
         
         if FileManager.default.fileExists(atPath: _fileURL.path) {
-            return NSKeyedUnarchiver.unarchiveObject(withFile: _fileURL.path) as? TMDBConfig
+            return NSKeyedUnarchiver.unarchiveObject(withFile: _fileURL.path) as? OTMConfig
         } else {
             return nil
         }

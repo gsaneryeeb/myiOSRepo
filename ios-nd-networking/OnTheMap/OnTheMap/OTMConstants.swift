@@ -18,19 +18,26 @@ extension OTMClient {
         // Parse Application ID:QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr
         // REST API Key:QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY
         
-        static let UdacityApiKey = "Udacity-API-KEY"
-        static let FacebookApiKey = "Facebook-API-KEY"
+        static let ApiKey = "Udacity-API-KEY"
         
-        // MARK: URLs
+        // MARK: URLs For Udacity
         static let ApiScheme = "https"
-        static let ApiHost = "parse.udacity.com"
-        static let ApiPath = "/parse/classes"
+        static let ApiHost = "www.udacity.com"
+        static let ApiPath = "/api"
+        
         static let AuthorizationURL = "https://www.themoviedb.org/authenticate/"
         static let AccountURL = "https://www.themoviedb.org/account/"
     }
     
     // MARK: Methods
     struct Methods {
+        
+        
+        // MARK: Session for Udacity
+        static let Session = "/session"
+        
+        // MARK: Users for Udacity
+        static let Users = "/users"
         
         // MARK: Account
         static let Account = "/account"
@@ -57,6 +64,8 @@ extension OTMClient {
         static let SessionID = "session_id"
         static let RequestToken = "request_token"
         static let Query = "query"
+        static let Username = "username"
+        static let Password = "password"
     }
     
     // MARK: JSON Body Keys
@@ -69,6 +78,16 @@ extension OTMClient {
     
     // MARK: JSON Response Keys
     struct JSONResponseKeys {
+        
+        // MARK: Users for Udacity
+        static let Account = "account"
+        static let UserKey = "key"
+        static let Status = "status"
+        static let Session = "session"
+        static let Error = "error"
+        static let User = "user"
+        static let FirstName = "first_name"
+        static let LastName = "last_name"
         
         // MARK: General
         static let StatusMessage = "status_message"
@@ -100,7 +119,7 @@ extension OTMClient {
     
     // MARK: Poster Sizes
     struct PosterSizes {
-        static let RowPoster = TMDBClient.sharedInstance().config.posterSizes[2]
-        static let DetailPoster = TMDBClient.sharedInstance().config.posterSizes[4]
+        static let RowPoster = OTMClient.sharedInstance().config.posterSizes[2]
+        static let DetailPoster = OTMClient.sharedInstance().config.posterSizes[4]
     }
 }

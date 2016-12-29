@@ -80,14 +80,7 @@ class OTMConfig: NSObject, NSCoding {
     
     private func updateConfiguration() {
         
-        OTMClient.sharedInstance().getConfig() { (didSucceed, error) in
-            if let error = error {
-                print("Error updating config: \(error.localizedDescription)")
-            } else {
-                print("Updated Config: \(didSucceed)")
-                self.save()
-            }
-        }
+        
     }
     
     // MARK: NSCoding

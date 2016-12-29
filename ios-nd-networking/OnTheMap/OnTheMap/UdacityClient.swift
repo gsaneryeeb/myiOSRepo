@@ -8,9 +8,9 @@
 
 import Foundation
 
-// MARK: - OTMClient: NSObject
+// MARK: - UdacityClient: NSObject
 
-class OTMClient: NSObject {
+class UdacityClient: NSObject {
 
     // MARK: Properties
     
@@ -18,12 +18,12 @@ class OTMClient: NSObject {
     var session = URLSession.shared
     
     // configuration object
-    var config = OTMConfig()
+    //var config = OTMConfig()
     
     // authentication state
-    var requestToken: String? = nil
+    var userKey: String? = nil
     var sessionID: String? = nil
-    var userID: Int? = nil
+    var udacityStudent : UdacityStudent? = nil 
     
     // MARK: Initializers
     override init() {
@@ -35,11 +35,11 @@ class OTMClient: NSObject {
     func taskForGETMethod(_ method: String, parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         /* 1. Set the parameters */
-        var parametersWithApiKey = parameters
-        parametersWithApiKey[ParameterKeys.ApiKey] = OTMClient.Constants.ApiKey as AnyObject?
+        
+        // There was no parameters.
         
         /* 2/3. Build the URL, Configure the request */
-        let request = NSMutableURLRequest(url: tmdbURLFromParameters(parametersWithApiKey, withPathExtension: method))
+        let request = NSMutableURLRequest(url: udacityURLFromParameters(parameters, withPathExtension: method))
         
         /* 4. Make the request */
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
@@ -80,14 +80,14 @@ class OTMClient: NSObject {
     
     // MARK: POST
     
-    func taskForPOSTMethod(_ method: String, parameters: [String:AnyObject], jsonBody: String, completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForPOSTMethod(_ method: String, parameters:[String:AnyObject],jsonBody: String, completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         /* 1. Set the parameters */
-        var parametersWithApiKey = parameters
-        parametersWithApiKey[ParameterKeys.ApiKey] = Constants.ApiKey as AnyObject?
         
         /* 2/3. Build the URL, Configure the request */
-        let request = NSMutableURLRequest(url: tmdbURLFromParameters(parametersWithApiKey, withPathExtension: method))
+        let request = NSMutableURLRequest(url: udacityURLFromParameters(parameters, withPathExtension: method))
+        
+        //let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -157,12 +157,12 @@ class OTMClient: NSObject {
     }
     
     // create a URL from parameters
-    private func tmdbURLFromParameters(_ parameters: [String:AnyObject], withPathExtension: String? = nil) -> URL {
+    private func udacityURLFromParameters(_ parameters: [String:AnyObject], withPathExtension: String? = nil) -> URL {
         
         var components = URLComponents()
-        components.scheme = OTMClient.Constants.ApiScheme
-        components.host = OTMClient.Constants.ApiHost
-        components.path = OTMClient.Constants.ApiPath + (withPathExtension ?? "")
+        components.scheme = UdacityClient.Constants.ApiScheme
+        components.host = UdacityClient.Constants.ApiHost
+        components.path = UdacityClient.Constants.ApiPath + (withPathExtension ?? "")
         components.queryItems = [URLQueryItem]()
         
         for (key, value) in parameters {
@@ -175,9 +175,9 @@ class OTMClient: NSObject {
     
     // MARK: Shared Instance
     
-    class func sharedInstance() -> OTMClient {
+    class func sharedInstance() -> UdacityClient {
         struct Singleton {
-            static var sharedInstance = OTMClient()
+            static var sharedInstance = UdacityClient()
         }
         return Singleton.sharedInstance
     }

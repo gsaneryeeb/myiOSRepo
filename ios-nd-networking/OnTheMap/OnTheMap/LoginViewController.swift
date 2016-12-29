@@ -63,12 +63,8 @@ class LoginViewController: UIViewController {
         } else {
             setUIEnable(false)
             
-            let parameters = [
-                OTMClient.ParameterKeys.Username:usernameTextField.text!,
-                OTMClient.ParameterKeys.Password:passwordTextField.text!
-            ]
             
-            OTMClient.sharedInstance().authenticateWithAPI(parameters as [String : AnyObject]){(success,errorString) in
+            OTMClient.sharedInstance().authenticateWithAPI(usernameTextField.text!,passwordTextField.text!){(success,errorString) in
                 performUIUpdatesOnMain {
                     if success {
                         self.completeLogin()

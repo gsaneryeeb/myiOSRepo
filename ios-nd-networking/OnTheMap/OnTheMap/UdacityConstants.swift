@@ -33,6 +33,8 @@ extension UdacityClient {
         // MARK: Users for Udacity
         static let Users = "/users"
         
+        static let StudentLocation = "/StudentLocation"
+        
     }
     
     // MARK: Parameter Keys
@@ -47,10 +49,10 @@ extension UdacityClient {
         
         // MARK: Users for Udacity
         static let Session = "session"
-        static let SessionID = "session_id"
+        static let SessionID = "id"
         
         // MARK: Account
-        static let Account = "id"
+        static let Account = "account"
         static let AccountKey = "key"
         
         // MARK: User
@@ -60,6 +62,17 @@ extension UdacityClient {
         static let UserKey = "key"
         
     }
+    
+    // MARK: Udacity Student Keys
+    
+    struct UdacityStudentKeys {
+        
+        // MARK: User
+        static let firstname = "first_name"
+        static let lastname = "lastname"
+        static let uniquekey = "uniquekey"
+    }
+    
     
 }
 

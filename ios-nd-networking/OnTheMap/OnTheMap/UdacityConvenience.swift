@@ -14,6 +14,24 @@ import Foundation
 extension UdacityClient {
     
     
+    
+    // MARK: logout app
+    
+    func logout(sessionId : String, completionHandlerForLogout: @escaping (_ success: Bool, _ errorString: String?) -> Void){
+        
+        let _ = logoutFromUdacity(sessionId: sessionId){
+            success , errorString in
+            
+            if success {
+                
+                completionHandlerForLogout(true,nil)
+            }else{
+                completionHandlerForLogout(false, "Error in logout")
+            }
+        }
+    }
+    
+    
     // MARK: Authentication (GET) via the API
     /*
      Steps for Authentication...
@@ -27,7 +45,7 @@ extension UdacityClient {
      Step 5: Go to the next view!
      */
     
-    func authenticateWithAPI (_ username: String?,_ password:String?,completionHandlerForAuth: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
+    func authenticateWithAPI (_ username: String,_ password:String,completionHandlerForAuth: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
         
         // chain completion handlers for each request so that they run one after the other
         
@@ -53,7 +71,7 @@ extension UdacityClient {
                 }
                         
             }else{
-                completionHandlerForAuth(success, errorString as! String?)
+                completionHandlerForAuth(success, errorString?.localizedDescription)
             }
         }
         
@@ -62,12 +80,14 @@ extension UdacityClient {
     
 
     // MARK: Login with Username and Password
-    private func loginWithToken(_ username: String?, _ password: String?,completionHandlerForLogin: @escaping (_ success: Bool, _ errorString: Error?) -> Void) {
+    private func loginWithToken(_ username: String, _ password: String,completionHandlerForLogin: @escaping (_ success: Bool, _ errorString: Error?) -> Void) {
         
         /* 1. Specify parameters, method (if has {key}), and HTTP body (if POST) */
         
-        let jsonBody = "{\"udacity\":{\"\(UdacityClient.ParameterKeys.Username)\":\"\(username)\",\"\(UdacityClient.ParameterKeys.Password)\":\"\(password)\"}}"
+        /*"{\"udacity\":{\"username\":\"Optional(\"gansgeryeee@gmail.com\")\",\"password\":\"Optional(\"cindyning1027\")\"}}"*/
         
+        let jsonBody = "{\"udacity\":{\"\(UdacityClient.ParameterKeys.Username)\":\"\(username)\",\"\(UdacityClient.ParameterKeys.Password)\":\"\(password)\"}}"
+        print("JsonBody--> \(jsonBody)")
         /* 2. Make the request */
         let _ = taskForPOSTMethod(UdacityClient.Methods.SessionNew,parameters:[String:AnyObject](),jsonBody: jsonBody) { (results, error) in
             
@@ -113,7 +133,6 @@ extension UdacityClient {
                 return
             }
         
-            print("key found \(key)")
             self.userKey = key;
             
             completionHandlerForLogin(true, nil)

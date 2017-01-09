@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - LoginViewController: UIViewCOntroller
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController,UINavigationControllerDelegate {
     
     // MARK: Properties
     
@@ -64,7 +64,7 @@ class LoginViewController: UIViewController {
             setUIEnable(false)
             
             
-            OTMClient.sharedInstance().authenticateWithAPI(usernameTextField.text!,passwordTextField.text!){(success,errorString) in
+            UdacityClient.sharedInstance().authenticateWithAPI(usernameTextField.text!,passwordTextField.text!){(success,errorString) in
                 performUIUpdatesOnMain {
                     if success {
                         self.completeLogin()
@@ -82,7 +82,14 @@ class LoginViewController: UIViewController {
     private func completeLogin() {
         //self.debugTextLabel.text = ""
         self.setUIEnable(true)
-        let controller = self.storyboard!.instantiateViewController(withIdentifier: "MoviesTabBarController") as! UITabBarController
+        
+        // Add Buttons on top
+        // The first way would be to embed a navigation view controller and present the NavController instead
+        // of the TabController. The NavController will automatically present the TabController.
+        // NavController> TabController >
+        // https://discussions.udacity.com/t/help-with-getting-navbar-items-on-tabbarcontroller-i-e-logout-dropapin-referesh-icons/162709/6
+        
+        let controller = self.storyboard!.instantiateViewController(withIdentifier: "showOnTheMap") as! UINavigationController
         self.present(controller, animated: true, completion: nil)
     }
     

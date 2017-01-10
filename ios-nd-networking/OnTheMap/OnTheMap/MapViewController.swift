@@ -23,10 +23,13 @@ class MapViewController : UIViewController, MKMapViewDelegate {
     var studentLocations = [ParseStudentLocation]()
     
     // MARK: Life Cycle
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        // Set delegate for map
+        
+        mapView.delegate = self
         
         print("----MapView viewDidLoad----")
     }
@@ -36,6 +39,7 @@ class MapViewController : UIViewController, MKMapViewDelegate {
         print("----MapView viewWillAppear----")
         
         super.viewWillAppear(animated)
+        
         
         studentLocations = (UIApplication.shared.delegate as! AppDelegate).studentLocations
         
@@ -110,9 +114,9 @@ class MapViewController : UIViewController, MKMapViewDelegate {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
             pinView!.pinTintColor = .red
-            pinView!.rightCalloutAccessoryView =  UIButton(type: .detailDisclosure)
+            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         }
-        else{
+        else {
             pinView!.annotation = annotation
         }
         

@@ -75,10 +75,10 @@ class TabBarController: UITabBarController{
             
             performUIUpdatesOnMain {
                 
-                
                 if success{
                     print("success>")
-                    self.showLoginView()
+                    //self.showLoginView()
+                    self.dismiss(animated: true, completion: nil)
                 }else{
                     print("error>")
                     self.showErrorAlert("Error in Logout")

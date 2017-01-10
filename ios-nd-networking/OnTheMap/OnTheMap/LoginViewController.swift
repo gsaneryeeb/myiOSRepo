@@ -62,14 +62,12 @@ class LoginViewController: UIViewController,UINavigationControllerDelegate {
             debugTextLabel.text = "Username or Password Empty."
         } else {
             setUIEnable(false)
-            
-            
             UdacityClient.sharedInstance().authenticateWithAPI(usernameTextField.text!,passwordTextField.text!){(success,errorString) in
                 performUIUpdatesOnMain {
                     if success {
                         self.completeLogin()
                     } else {
-                        self.displayError(errorString)
+                        self.showErrorAlert(errorString!)
                     }
                 }
             }
@@ -93,8 +91,18 @@ class LoginViewController: UIViewController,UINavigationControllerDelegate {
         self.present(controller, animated: true, completion: nil)
     }
     
+    // MARK: showErrorAlert
     
-    
+    func showErrorAlert(_ error : String){
+        
+        let alert = UIAlertController(title: "", message: error, preferredStyle: UIAlertControllerStyle.alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
     
 }
 

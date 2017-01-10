@@ -67,21 +67,40 @@ class NewStudentLocationViewController: UIViewController,UITextFieldDelegate,UIN
         geocoder.geocodeAddressString(address!){
             placemarks, error in
             
-            if error != nil {
+            func displayError(_ error: String){
                 
-                print("::: CLGeocoder sent an error")
+                print(error)
+                self.showErrorAlert("Location not found")
                 
             }
             
-            /* GUARD: cannot find placemark */
+            if error != nil {
+                
+                displayError(":::CLGeocoder sent an error")
+                return
+            }
+            
             guard let placemark = placemarks?[0] else {
-                print("::: CLGeocoder cannot find placemark")
+                
+                displayError(":::CLGeocoder cannot find placemark")
                 return
             }
             
             self.selectedPlaceMark = placemark
             
             self.mapView.addAnnotation(MKPlacemark(placemark: placemark))
+            
+            //zoom the map to the selected location
+            let latDelta:CLLocationDegrees = 0.3
+            let lonDelta:CLLocationDegrees = 0.3
+            let span = MKCoordinateSpanMake(latDelta, lonDelta)
+            let location = CLLocationCoordinate2DMake(placemark.location!.coordinate.latitude, placemark.location!.coordinate.longitude)
+            let region = MKCoordinateRegionMake(location, span)
+            self.mapView.setRegion(region, animated: false)
+            //end zooming to the location
+            
+            self.showLinkView()
+
         }
     }
     

@@ -47,7 +47,7 @@ extension ParseStudentLocationClient {
     // MARK: ParametersValues
     struct ParametersValues {
         
-        static let Limit = "70"
+        static let Limit = "100"
         static let Order = "-updatedAt"
         
     }

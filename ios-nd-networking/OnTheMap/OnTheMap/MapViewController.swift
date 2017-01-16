@@ -135,7 +135,9 @@ class MapViewController : UIViewController, MKMapViewDelegate {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.shared
             if let toOpen = view.annotation?.subtitle!{
-                app.openURL(URL(string: toOpen)!)
+                // openURL Deprecated in iOS 10.0
+                // app.openURL(URL(string: toOpen)!)
+                app.open(URL(string:toOpen)!, options: [String : AnyObject](), completionHandler: nil)
             }
         }
     }

@@ -34,8 +34,8 @@ class ParseStudentLocationClient : NSObject {
         /* 2/3. Build the URL, Configure the request */
         let request = NSMutableURLRequest(url: parseStudentLocationURLFromParameters(parameters, withPathExtension: method))
         
-        request.addValue(ParseStudentLocationClient.RequestKey.ApplicationId, forHTTPHeaderField: "X-Parse-Application-Id")
-        request.addValue(ParseStudentLocationClient.RequestKey.ApiKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
+        request.addValue(ParseStudentLocationClient.RequestValue.ApplicationId, forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue(ParseStudentLocationClient.RequestValue.ApiKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
         
         /* 4. Make the request */
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in

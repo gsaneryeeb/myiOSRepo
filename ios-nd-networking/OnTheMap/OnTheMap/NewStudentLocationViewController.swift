@@ -87,9 +87,9 @@ class NewStudentLocationViewController: UIViewController,UITextFieldDelegate,UIN
             
             if error != nil {
                 
+                // Stopping and hiding the activity indicator
                 DispatchQueue.main.async {
-                    self.activityIndicator.alpha = 0.0
-                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
                 }
                 
                 displayError(":::CLGeocoder sent an error")
@@ -118,8 +118,8 @@ class NewStudentLocationViewController: UIViewController,UITextFieldDelegate,UIN
             self.showLinkView()
             
             DispatchQueue.main.async {
-                self.activityIndicator.alpha = 0.0
-                self.activityIndicator.stopAnimating()
+                
+                self.activityIndicator.isHidden = true
             }
 
         }

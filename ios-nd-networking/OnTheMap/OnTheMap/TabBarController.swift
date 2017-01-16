@@ -104,8 +104,9 @@ class TabBarController: UITabBarController{
                 if success {
                     
                     print("Success > students found: \(studentLocations?.count)")
-                    
-                    (UIApplication.shared.delegate as! AppDelegate).studentLocations.append(contentsOf: studentLocations!)
+                
+                    StudentLocations.sharedInstance.listOfStudents.append(contentsOf: studentLocations!)
+
                     
                     let vc1 = self.viewControllers![0] as! MapViewController
                     
@@ -113,7 +114,7 @@ class TabBarController: UITabBarController{
                     
                     let vc2 = self.viewControllers![1] as! TableViewController
                     
-                    vc2.studentLocations = studentLocations!
+                    //vc2.studentLocations = studentLocations!
                     
                     if let pinTable = vc2.pinsTableView {
                         

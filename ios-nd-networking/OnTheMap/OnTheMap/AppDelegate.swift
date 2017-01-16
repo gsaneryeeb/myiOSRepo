@@ -17,7 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    var studentLocations = [ParseStudentLocation]()
+    //var studentLocations = [ParseStudentLocation]()
+    
+    //static var studentLocations = StudentLocations.sharedInstance
+    
     var udacityClient = UdacityClient()
 
     // MARK: UIApplicationDelegate

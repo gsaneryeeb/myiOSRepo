@@ -31,6 +31,10 @@ class LoginViewController: UIViewController,UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Set the delegates here so that the keyboard can be dismissed when we finish editing the text fields:
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
+        
         //get the app delegate
         appDelegate = UIApplication.shared.delegate as! AppDelegate
         
@@ -66,8 +70,17 @@ class LoginViewController: UIViewController,UINavigationControllerDelegate {
                 performUIUpdatesOnMain {
                     if success {
                         self.completeLogin()
+                        
+                        // We can try login again after a logout
+                        self.setUIEnable(true)
+                        
                     } else {
+                        
+                        // We can try again after a login failure
+                        self.setUIEnable(true)
+                        
                         self.showErrorAlert(errorString!)
+                        
                     }
                 }
             }

@@ -23,6 +23,7 @@ class NewStudentLocationViewController: UIViewController,UITextFieldDelegate,UIN
     @IBOutlet weak var linkTextField: UITextField!
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
     // MARK: Properties
@@ -35,6 +36,7 @@ class NewStudentLocationViewController: UIViewController,UITextFieldDelegate,UIN
     var studentLocations = [ParseStudentLocation]()
     
     var parseStudentLocation: ParseStudentLocation?
+    
     var selectedPlaceMark: CLPlacemark?
     
     
@@ -44,6 +46,8 @@ class NewStudentLocationViewController: UIViewController,UITextFieldDelegate,UIN
         super.viewDidLoad()
         
         print("----NewStudentLocationViewController : viewDidLoad----")
+        
+        activityIndicator.alpha = 0.0
         
         prepareTextField(textField: locationTextField, defaultText: inputLocationText)
         
@@ -62,6 +66,13 @@ class NewStudentLocationViewController: UIViewController,UITextFieldDelegate,UIN
         
         let address = locationTextField.text
         
+        
+        DispatchQueue.main.async {
+            self.activityIndicator.alpha = 1.0
+            self.activityIndicator.startAnimating()
+        }
+        
+        
         let geocoder = CLGeocoder()
         
         geocoder.geocodeAddressString(address!){
@@ -75,6 +86,11 @@ class NewStudentLocationViewController: UIViewController,UITextFieldDelegate,UIN
             }
             
             if error != nil {
+                
+                DispatchQueue.main.async {
+                    self.activityIndicator.alpha = 0.0
+                    self.activityIndicator.stopAnimating()
+                }
                 
                 displayError(":::CLGeocoder sent an error")
                 return
@@ -100,6 +116,11 @@ class NewStudentLocationViewController: UIViewController,UITextFieldDelegate,UIN
             //end zooming to the location
             
             self.showLinkView()
+            
+            DispatchQueue.main.async {
+                self.activityIndicator.alpha = 0.0
+                self.activityIndicator.stopAnimating()
+            }
 
         }
     }

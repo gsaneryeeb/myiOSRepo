@@ -20,7 +20,7 @@ class MapViewController : UIViewController, MKMapViewDelegate {
     
     // MARK: Properties
     
-    var studentLocations = [ParseStudentLocation]()
+    //var studentLocations = [ParseStudentLocation]()
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -41,13 +41,18 @@ class MapViewController : UIViewController, MKMapViewDelegate {
         super.viewWillAppear(animated)
         
         
-        studentLocations = (UIApplication.shared.delegate as! AppDelegate).studentLocations
+        print("StudentLocations count:\(StudentLocations.sharedInstance.listOfStudents.count)")
         
-        print("StudentLocations count:\(studentLocations.count)")
+        // When viewWillAppear is called (for example when we change tabs) annotations are always added, regardless if they were previously added:
         
-        if (studentLocations.count > 0){
+        // Such as Pin have the heavy black shades. To avoid this, make sure that the map is always cleared of any previously added pins.
+        
+        self.mapView.removeAnnotations(self.mapView.annotations)
+        
+        if (StudentLocations.sharedInstance.listOfStudents.count > 0){
             
-            self.showStudentLocations(studentLocations: studentLocations)
+            self.showStudentLocations(studentLocations: StudentLocations.sharedInstance.listOfStudents)
+            
         }
     }
     

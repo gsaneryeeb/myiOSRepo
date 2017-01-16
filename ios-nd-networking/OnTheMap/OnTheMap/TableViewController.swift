@@ -18,7 +18,7 @@ class TableViewController : UITableViewController {
     
     // MARK: Properties
     
-    var studentLocations = [ParseStudentLocation]()
+    //var studentLocations = [ParseStudentLocation]()
     
     // MARK: Life Cycle
     
@@ -34,7 +34,7 @@ class TableViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return studentLocations.count
+        return StudentLocations.sharedInstance.listOfStudents.count
         
     }
     
@@ -42,7 +42,7 @@ class TableViewController : UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "PinTableCell")!
         
-        let studentLocation = studentLocations[indexPath.row]
+        let studentLocation = StudentLocations.sharedInstance.listOfStudents[indexPath.row]
         
         // Set the studentLocation and image
         
@@ -58,7 +58,10 @@ class TableViewController : UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let studentLocation = studentLocations[indexPath.row]
+        //Deselect the selected row here so that it doesn't remain in the "Selected State" after returning to the app from the browser.
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let studentLocation = StudentLocations.sharedInstance.listOfStudents[indexPath.row]
         
         if let url = URL(string: studentLocation.mediaURL!){
             

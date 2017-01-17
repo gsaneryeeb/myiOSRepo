@@ -30,5 +30,5 @@ Udacity iOS Nanodegree iOS Networking Project
 
 [1]:	https://discussions.udacity.com/t/help-with-getting-navbar-items-on-tabbarcontroller-i-e-logout-dropapin-referesh-icons/162709/6
 [2]:	https://twitter.com/tsaneryeer "@tsaneryeer"
-[3]:	www.linkedin.com/in/saneryee
+[3]:	www.linkedin.com/in/saneryee "www.linkedin.com/in/saneryee"
 [4]:	http://www.facebook.com/gsangeryeee "http://www.facebook.com/gsangeryeee"

@@ -11,7 +11,7 @@ VirtualTourist is an iOS application that allows users specify travel locations 
 
 ### Installation
 
-To build VirtualTourist you need to create a file called **ApiKeys.plist**in the app folder that needs to contain an entry called**FLICKER_API_KEY**that contains your Flickr API Key.
+To build VirtualTourist you need to create a file called **ApiKeys.plist** in the app folder that needs to contain an entry called **FLICKER_API_KEY** that contains your Flickr API Key.
 
 ### Usage
 

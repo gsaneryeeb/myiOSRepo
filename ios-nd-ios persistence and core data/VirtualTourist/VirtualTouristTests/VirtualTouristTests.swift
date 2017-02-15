@@ -2,8 +2,8 @@
 //  VirtualTouristTests.swift
 //  VirtualTouristTests
 //
-//  Created by JasonZhang on 18/01/2017.
-//  Copyright © 2017 Saneryee. All rights reserved.
+//  Created by JasonZ on 2017-2-9.
+//  Copyright © 2017 saneryee. All rights reserved.
 //
 
 import XCTest

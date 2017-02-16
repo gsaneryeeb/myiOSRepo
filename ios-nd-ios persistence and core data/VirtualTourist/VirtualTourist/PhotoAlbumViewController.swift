@@ -123,6 +123,8 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
         configureToolBarButton()
     }
     
+    // MARK: Configure Button "New Collection"
+    
     func configureToolBarButton() {
         if !collectionView.indexPathsForSelectedItems!.isEmpty {
             photoAlbumToolbarButton.isEnabled = true
@@ -135,7 +137,7 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
             photoAlbumToolbarButton.isEnabled = true
             return
         }
-        photoAlbumToolbarButton.isEnabled = false
+        
     }
     
     // MARK: Collection View Delegate
@@ -217,6 +219,10 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate, UICo
             }
             
             // loaded image
+            
+            // set a placeholder
+            cell.imageView.image = UIImage(named: "placeholder")
+            
             let image = UIImage(data: selectedPhoto.image! as Data)
             cell.imageView.image = image
             cell.errorLabel.isHidden = true
